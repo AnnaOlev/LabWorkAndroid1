@@ -23,4 +23,9 @@ public class ElementsList extends AppCompatActivity {
         ItemAdapter adapter = new ItemAdapter(this, mItemList);
         listView.setAdapter(adapter);
     }
+    
+    @Override
+    public void onBackPressed(){
+        finish();
+    }
 }
