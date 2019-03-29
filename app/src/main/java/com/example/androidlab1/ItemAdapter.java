@@ -14,74 +14,50 @@ import java.util.List;
 
 public class ItemAdapter extends BaseAdapter {
 
-    private List<Item> mItemList;
-    private Context context;
-
     public static class MyViewHolder {
         TextView numbers;
         ImageView pic;
     }
 
-    ItemAdapter(Context context, List<Item> list) {
-        super();
-
-        this.context = context;
-        mItemList = list;
-    }
+    private Context context;
 
     @Override
     public int getCount() {
-        return mItemList.size();
+        return 1000000;
     }
 
     @Override
-    public Object getItem(int position) {
-        return mItemList.get(position);
+    public Object getItem(int i) {
+        return null;
     }
 
     @Override
-    public long getItemId(int position) {
-        return position;
+    public long getItemId(int i) {
+        return 0;
     }
 
-    @SuppressLint("ViewHolder")
+    ItemAdapter(Context context) {
+        this.context = context;
+
+    }
+
+    @SuppressLint({"ViewHolder", "CutPasteId"})
     @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
+    public View getView(int i, View view, ViewGroup viewGroup) {
 
         MyViewHolder holder;
-        convertView = LayoutInflater.from(context).inflate(R.layout.item_list, parent, false);
+        view = LayoutInflater.from(context).inflate(R.layout.item_list, viewGroup, false );
         holder = new MyViewHolder();
-        holder.numbers = convertView.findViewById(R.id.number);
-        holder.pic = convertView.findViewById(R.id.picture);
-
-        convertView.setTag(holder);
-        holder = (MyViewHolder) convertView.getTag();
-
-        holder.numbers.setText(convert(position+1));
-        if ((position & 1) == 1) {
-            convertView.setBackgroundColor(Color.rgb(170, 170, 170));
+        holder.numbers = view.findViewById(R.id.number);
+        holder.pic = view.findViewById(R.id.picture);
+        holder.pic.setImageResource(R.drawable.strange_dom);
+        if (i % 2 == 1) {
+            view.setBackgroundColor(Color.rgb(170, 170, 170));
         } else {
-            convertView.setBackgroundColor(Color.rgb(255, 255, 255));
+            view.setBackgroundColor(Color.rgb(255, 255, 255));
         }
-
-        return convertView;
-    }
-
-    private static String convert(int n) {
-        String[] units = {"", "one", "two", "three", "four", "five", "six", "seven",
-                "eight", "nine", "ten", "eleven", "twelve", "thirteen", "fourteen",
-                "fifteen", "sixteen", "seventeen", "eighteen", "nineteen"};
-
-        String[] tens = {"", "", "twenty", "thirty", "forty", "fifty", "sixty",
-                "seventy", "eighty", "ninety"};
-        if (n < 20 && n > 0)
-            return units[n];
-        if (n < 100)
-            return tens[n / 10] + (n % 10 != 0 ? " " : "") + units[n % 10];
-        if (n < 1000)
-            return units[n / 100] + " hundred" + (n % 100 != 0 ? " " : "") + convert(n % 100);
-        if (n < 1000000)
-            return convert(n / 1000) + " thousand" + (n % 1000 != 0 ? " " : "") + convert(n % 1000);
-        return "million";
+        
+        holder.numbers.setText(Converter.toString(i+1));
+        return view;
     }
 }
