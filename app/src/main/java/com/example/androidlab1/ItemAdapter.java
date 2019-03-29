@@ -56,7 +56,7 @@ public class ItemAdapter extends BaseAdapter {
         } else {
             view.setBackgroundColor(Color.rgb(255, 255, 255));
         }
-        
+
         holder.numbers.setText(Converter.toString(i+1));
         return view;
     }

@@ -10,11 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".SplashScreen"
-<<<<<<< HEAD
+
             android:configChanges="orientation|keyboardHidden|screenSize">
-=======
-                  android:configChanges="orientation|keyboardHidden|screenSize">
->>>>>>> 52e2ae6ba671bb84fda07accd132317179054b3c
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

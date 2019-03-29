@@ -20,17 +20,10 @@ public class ElementsList extends AppCompatActivity {
         ItemAdapter adapter = new ItemAdapter(this);
         listView.setAdapter(adapter);
     }
-<<<<<<< HEAD
 
-=======
-    
->>>>>>> 52e2ae6ba671bb84fda07accd132317179054b3c
     @Override
     public void onBackPressed(){
         finish();
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 52e2ae6ba671bb84fda07accd132317179054b3c
+
